@@ -1,12 +1,13 @@
+// Replace with your configed '.env' or use default one, e.g. require('dotenv').config();
 require('dotenv').config({ path: './private.env'});
 const cron = require('node-cron');
 
 const request = require('./services/request.service');
+const Logger = require('./utils/logger').logger;
 
 const REQUEST_URL = process.env.REQUEST_URL;
-const LOGS_PATH = process.env.LOGS_PATH;
-const SHOULD_LOG = process.env.SHOULD_LOG;
 const DAYS_TO_REQUEST = process.env.DAYS_TO_REQUEST;
+const SHOULD_LOG = process.env.SHOULD_LOG || false;
 
 (function main() {
     //running a task every minute, see https://www.npmjs.com/package/node-cron
@@ -15,6 +16,9 @@ const DAYS_TO_REQUEST = process.env.DAYS_TO_REQUEST;
         try {
             const data = await request.get_data(REQUEST_URL);
             console.log(data);
+            if (SHOULD_LOG) {
+                Logger.info(`DATA: ${JSON.stringify(data)}`);
+            }
         } catch(e) {
             console.error(e);
         }
