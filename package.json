@@ -1,0 +1,23 @@
+{
+  "name": "request-o-bot",
+  "version": "1.0.0",
+  "description": "Checks the provided url with set periodicity, logs and notifies specific entries",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flomeni/request-o-bot.git"
+  },
+  "author": "https://github.com/Flomeni",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Flomeni/request-o-bot/issues"
+  },
+  "homepage": "https://github.com/Flomeni/request-o-bot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pm2": "^4.5.6"
+  }
+}
