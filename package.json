@@ -21,6 +21,7 @@
     "dotenv": "^8.2.0",
     "node-cron": "^3.0.0",
     "pm2": "^4.5.6",
-    "simple-node-logger": "^18.12.24"
+    "simple-node-logger": "^18.12.24",
+    "twilio": "^3.61.0"
   }
 }
