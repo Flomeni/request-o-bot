@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Flomeni/request-o-bot#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "node-cron": "^3.0.0",
     "pm2": "^4.5.6"
   }
 }
