@@ -51,7 +51,7 @@ class SmsNotificationMessage extends AbstractNotificationMessage {
             return 'The lot is available again!!!';
         }
 
-        return `The lot status is: ${this._dto}.`;
+        return `The lot status is: ${this._dto.status}.`;
     }
 }
 
