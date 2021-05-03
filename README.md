@@ -24,7 +24,7 @@ To run the bot, one MUST provide envirenment variables that feed services:
 - PHONE_TO=+15558675310 - Your phone to recieve notifications.
 
 ## Run examples:
- * Advanced: npm run example1
- * This example shows how one can provide custom Notification mapper, that will mutate notification message for SMS notification.
+    * Advanced: npm run example1
+    * This example shows how one can provide custom Notification mapper, that will mutate notification message for SMS notification.
 
 # IN PROGRESS
