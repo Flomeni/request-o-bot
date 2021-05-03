@@ -12,11 +12,13 @@ class SchedulerService {
     // running a task every %SCHEDULE_FOR%, see https://www.npmjs.com/package/node-cron
     // @params {JSON} cb - callback that returns fetched data
     start(cb) {
-        cron.schedule('* * * * *', () => {
+        let count = 1;
+        cron.schedule('* * * * *', async () => {
             try {
-                const data = cb();
+                cb();
+
                 if (SchedulerService.SHOULD_LOG) {
-                    this.logger.info(`SchedulerService::start ${JSON.stringify(data)}`);
+                    this.logger.info(`SchedulerService::start Tick #${count++} is finished.`);
                 }
             } catch(e) {
                 console.error(e);
