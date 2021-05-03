@@ -1,30 +1,31 @@
 // Replace with your configed '.env' or use default one, e.g. require('dotenv').config();
 require('dotenv').config({ path: './private.env'});
 
-const Scheduler = require('./services/scheduler.service');
-const request = require('./services/request.service');
+const SchedulerService = require('./services/scheduler.service');
+const RequestService = require('./services/request.service');
+const NotificationService = require('./services/notification.service');
 
 class RequestOBot {
 
     static REQUEST_URL = process.env.REQUEST_URL;
+    static SHOULD_LOG = process.env.SHOULD_LOG;
     
-    constructor() {
-        this.scheduler = new Scheduler();
-        this.notification_plugins = [];
+    constructor(plugins = []) {
+        this.schedulerService = new SchedulerService();
+        this.notificationService = new NotificationService(plugins);
+        this.requestService = new RequestService();
     }
 
     addPlugins(plugins) {
-        this.notification_plugins = this.notification_plugins.concat(plugins);
+        this.notificationService.addPlugins(plugins);
         return this;
     }
 
     schedule() {
-        this.scheduler.start(() => {
-            const data = request.get_data(RequestOBot.REQUEST_URL);
+        this.schedulerService.start(async () => {
+            const data = await this.requestService.getData(RequestOBot.REQUEST_URL);
             
-            this.notification_plugins.forEach(async (plugin) => {
-                await plugin.notify(data);
-            });
+            this.notificationService.notifyAll(data);
 
             return data;
         });

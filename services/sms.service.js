@@ -9,7 +9,12 @@ class SmsService {
         this.logger = require('../utils/logger');
     }
 
-    sendMessage(body = '') {
+    /**
+     * 
+     * @param {string} body 
+     * @returns
+     */
+    sendMessage(body) {
         client.messages
         .create({
             body,
@@ -17,8 +22,10 @@ class SmsService {
             to
         })
         .then(message => {
-            console.log(message.sid);
-            this.logger.info(`Message has been sent to [${to}] with text: ${message}`);
+            this.logger.info(`SmsService::sendMessage --BODY-- ${body}. \n Server response: ${JSON.stringify(message)}`);
+        })
+        .catch(response => {
+            this.logger.error(`SmsService::sendMessage --ERROR-- ${response}`);
         });
     }
 }

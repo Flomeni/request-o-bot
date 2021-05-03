@@ -1,16 +1,26 @@
 const axios = require('axios');
 
-const GET = (url, config) => {
-    return axios.get(url)
-        .then(response => response)
-        .catch(function (error) {
-            console.log(error);
-        });
-};
+class RequestService {
 
-const GET_DATA = async (url) => {
-    return (await GET(url)).data;
-};
+    constructor() {
+        this.logger = require('../utils/logger');
+    }
 
-exports.get = GET;
-exports.get_data = GET_DATA;
+    get(url, config) {
+        return axios.get(url)
+            .then(response => {
+                this.logger.info(`RequestService::get ${JSON.stringify(response.data)}`);
+                return response;
+            })
+            .catch(function (error) {
+                console.error(error);
+                this.logger.error(`RequestService::get ${error.message}`);
+            });
+    }
+
+    async getData(url) {
+        return (await this.get(url)).data;
+    }
+}
+
+module.exports = RequestService;

@@ -1,5 +1,5 @@
 const RequestOBot = require('../RequestOBot');
-const SmsPlugin = require('../core/sms-plugin');
+const SmsPlugin = require('../core/SmsNotificationPlugin');
 
 (function main(){
     const rb = new RequestOBot();
