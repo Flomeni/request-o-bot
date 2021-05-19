@@ -2,7 +2,7 @@
 
 ## Description
 Checks the provided url with set periodicity, logs and notifies specific entries through dedicated channels, managed by plugins.
-Client can provide self-written plugins and notification mappers, to add complementary messaging channels and change sending messages.
+Client can provide self-written plugins and notification mappers, to add complementary messaging channels and change formatting of sending messages.
 
 ## Plugins available at this moment
     * SMS - Done
