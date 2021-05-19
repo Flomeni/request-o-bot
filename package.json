@@ -1,13 +1,12 @@
 {
   "name": "request-o-bot",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Checks the provided url with set periodicity, logs and notifies specific entries",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example1": "node examples/advanced-usage-with-custom-response-mappers.js",
-    "example2": "node examples/simple-start.js",
-    "example3": "node examples/start-with-plugins.js"
+    "example": "node examples/advanced-usage-with-custom-response-mappers.js",
+    "bump": "node ./scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,10 @@
   },
   "homepage": "https://github.com/Flomeni/request-o-bot#readme",
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "inquirer": "^8.0.0",
     "node-cron": "^3.0.0",
     "pm2": "^4.5.6",
     "simple-node-logger": "^18.12.24",
