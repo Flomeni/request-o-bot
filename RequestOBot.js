@@ -26,8 +26,6 @@ class RequestOBot {
             const data = await this.requestService.getData(RequestOBot.REQUEST_URL);
             
             this.notificationService.notifyAll(data);
-
-            return data;
         });
     }
 }

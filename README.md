@@ -10,8 +10,10 @@ Client can provide self-written plugins and notification mappers, to add complem
     * Messangers - To be done
 
 ## Setup
+  0) npm install pm2 -g
   1) npm i
-  2) Follow the examples and setup your personal request environment
+  2) Follow the examples, setup your personal request environment and create your own entry file, e.g. app.js
+  3) run it using command: $ pm2 start app.js
 
 ## Configurations
 To run the bot, one MUST provide envirenment variables that feed services: 
@@ -24,7 +26,7 @@ To run the bot, one MUST provide envirenment variables that feed services:
 - PHONE_TO=+15558675310 - Your phone to recieve notifications.
 
 ## Run examples:
-    * Advanced: npm run example1
+    * Advanced: npm run example_advanced
     * This example shows how one can provide custom Notification mapper, that will mutate notification message for SMS notification.
 
 # IN PROGRESS

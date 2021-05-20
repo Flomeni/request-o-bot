@@ -1,4 +1,5 @@
 const fs = require('fs')
+const cmd = require('node-cmd');
 const appRootPath = require('app-root-path').path;
 const packageJSONPath = `${appRootPath}/package.json`;
 const packageJSON = require(packageJSONPath);
@@ -11,18 +12,10 @@ const choices = {
 const PROMPT_NAME = 'VERSIONS';
 
 (function main() {
-    bump();
+    cmd.runSync('npm version patch');
+    //bump();
 })();
 
-async function bump() {
-    const versionToIncrement = await prompt();
-    try {
-        packageJSON.version = incrementVersion(packageJSON.version, versionToIncrement);
-        fs.writeFileSync(packageJSONPath, JSON.stringify(packageJSON, /*replacer*/null, /*space*/2));
-    } catch (e) {
-        console.error(e);
-    }
-}
 
 async function prompt() {
     const inquirer = require('inquirer');
@@ -60,4 +53,14 @@ function incrementVersion(oldVersion, versionToIncrement) {
     }
 
     return verArray.join('.');
+}
+
+async function bump() {
+    const versionToIncrement = await prompt();
+    try {
+        packageJSON.version = incrementVersion(packageJSON.version, versionToIncrement);
+        fs.writeFileSync(packageJSONPath, JSON.stringify(packageJSON, /*replacer*/null, /*space*/2));
+    } catch (e) {
+        console.error(e);
+    }
 }
