@@ -1,5 +1,5 @@
 const RequestOBot = require('../RequestOBot');
-const SmsNotificationPlugin = require('../core/SmsNotificationPlugin');
+const SmsNotificationPlugin = require('../core/plugins/SmsNotificationPlugin');
 const { AbstractNotificationMessage } = require("../core/NotificationMessage");
 
 // Custom object, that will process messages
@@ -51,7 +51,7 @@ class SmsNotificationMessage extends AbstractNotificationMessage {
             return 'The lot is available again!!!';
         }
 
-        return `The lot status is: ${this._dto.status}.`;
+        return `The lot sell status is: ${this._dto.sellStatus}.`;
     }
 }
 
@@ -63,7 +63,6 @@ class SmsNotificationMessage extends AbstractNotificationMessage {
         new SmsNotificationPlugin(
             SmsNotificationMessage,
             /*isLoggable*/true,
-            /*isSendible*/true
         ),
     ])
     .schedule();

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "example": "node examples/advanced-usage-with-custom-response-mappers.js",
-    "bump": "node ./scripts/build.js"
+    "bump": "node ./scripts/build.js",
+    "start": "pm2 start examples/advanced-usage-with-custom-response-mappers.js"
   },
   "repository": {
     "type": "git",
