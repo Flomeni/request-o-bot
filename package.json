@@ -1,6 +1,6 @@
 {
   "name": "request-o-bot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Checks the provided url with set periodicity, logs and notifies specific entries",
   "main": "main.js",
   "scripts": {
