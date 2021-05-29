@@ -1,3 +1,6 @@
+const { assertNotNull } = require('../utils/assert'); 
+
+// Acts as an abstract class
 class AbstractNotificationMessage {
     /**
      * {string} body of the message. Stringified JSON by default.
@@ -22,8 +25,8 @@ class AbstractNotificationMessage {
 }
 
 /**
- *  "Abstract" Notification message that acts as a bridge between NotificationMessage
- *  interface and any new concrete NotificationMessage, wiring up behaviours of default
+ *  "Abstract" NotificationMessage that acts as a bridge between NotificationMessage
+ *  interface(AbstractNotificationMessage) and any new concrete NotificationMessage, wiring up behaviours of default
  *  and custom messages.
  *  */
 class NotificationMessage extends AbstractNotificationMessage {
@@ -33,6 +36,8 @@ class NotificationMessage extends AbstractNotificationMessage {
      */
     constructor(message) {
         super();
+        assertNotNull(message, "AbstractNotificationMessage instance");
+
         this._message = message;
     }
 
@@ -53,5 +58,27 @@ class NotificationMessage extends AbstractNotificationMessage {
     }
 }
 
+class DefaultNotificationMessage extends AbstractNotificationMessage {
+    /**
+     * 
+     * @param {Object} json - recieved data 
+     */
+    constructor(
+        json,
+        isLoggable = true,
+        isSendible = false
+    ) {
+        super();
+        this._body = JSON.stringify(json);
+        this._isLoggable = isLoggable;
+        this._isSendible = isSendible;
+    }
+
+    toString() {
+        return `Data: ${this._body}`;
+    }
+}
+
 exports.NotificationMessage = NotificationMessage;
 exports.AbstractNotificationMessage = AbstractNotificationMessage;
+exports.DefaultNotificationMessage = DefaultNotificationMessage;

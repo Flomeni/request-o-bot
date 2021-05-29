@@ -13,7 +13,7 @@ Client can provide self-written plugins and notification mappers, to add complem
   0) npm install pm2 -g
   1) npm i
   2) Follow the examples, setup your personal request environment and create your own entry file, e.g. app.js
-  3) run it using command: $ pm2 start app.js
+  3) run it using command: $ pm2 start YOUR_JS_ENTRY.js
 
 ## Configurations
 To run the bot, one MUST provide envirenment variables that feed services: 

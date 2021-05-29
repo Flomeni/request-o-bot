@@ -1,13 +1,15 @@
 const AbstractNotificationPlugin = require('./AbstractNotificationPlugin');
-const SmsService = require('../services/sms.service');
-const DefaultNotificationMessage = require('./DefaultNotificationMessage');
-const { NotificationMessage } = require('./NotificationMessage');
+const SmsService = require('../../services/sms.service');
+const { 
+    NotificationMessage,
+    DefaultNotificationMessage
+} = require('../NotificationMessage');
 
 class SmsNotificationPlugin extends AbstractNotificationPlugin {
     constructor(
         notificationCtor = DefaultNotificationMessage,
         isLoggable = process.env.SHOULD_LOG,
-        isSendible = false,
+        isSendible = true,
     ) {
         super();
         this.notificationCtor = notificationCtor;
@@ -22,7 +24,7 @@ class SmsNotificationPlugin extends AbstractNotificationPlugin {
         );
 
         if (!this.isSendible || !notification.getIsSendible()) {
-            console.warn('Message is not sendible');
+            console.warn('SmsNotificationPlugin::notify --- WARN --- Message is not sendible');
             return;
         }
 
